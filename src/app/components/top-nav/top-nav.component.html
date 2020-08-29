@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="gutter"></span>
+    <span>
+        <notification-icon></notification-icon>
+    </span>
+    <span>
+        {{time}}
+    </span>
+</mat-toolbar>
+<mat-drawer-container class="side-nav-container" [hasBackdrop]="true">
+    <mat-drawer class="mat-drawer-side-container" #drawer mode="side">
+        <mat-list>
+            <mat-list-item *ngFor="let navElement of sideNavElement; last as last">
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <h4 mat-line>{{navElement.name}}</h4>
+                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-list-item *ngFor="let navElement of sideNavElement; last as last">
+                <mat-icon mat-list-icon>cast</mat-icon>
+                <a mat-line href="{{navElement.ref}}" target="_blank">
+                    {{navElement.name}}
+                </a>
+                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content class="content-container">
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>

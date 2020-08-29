@@ -1,0 +1,28 @@
+.mat-toolbar {
+  font-size: 1.2rem;
+}
+
+.gutter {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content {
+  padding-left: 25px;
+  padding-top: 20px;
+}
+
+.side-nav-container {
+  height: 89vh;
+  margin: 0 0 0 12px;
+
+  .mat-drawer-side-container {
+    width: 20vw;
+    height: 100%;
+    margin-right: 5px;
+  }
+}
+
+.content-container {
+  margin-top: 20px;
+  margin-left:  20px;
+}

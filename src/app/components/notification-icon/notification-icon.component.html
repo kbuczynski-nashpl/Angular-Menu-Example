@@ -1,0 +1,42 @@
+<mat-icon class="notification-icon"
+          mat-line
+          matBadge="{{getNotificationNumber()}}"
+          matBadgeColor="warn"
+          [matMenuTriggerFor]="menu"
+>notifications
+</mat-icon>
+
+<mat-menu #menu="matMenu">
+    <div class="notification-action-clear-all"
+         (click)="$event.stopPropagation(); clearNotifications()"
+         *ngIf="getNotificationNumber() > 0"
+    >
+        <p>Clear All</p>
+    </div>
+    <mat-card *ngFor="let notification of notifications"
+              (click)="$event.stopPropagation()"
+    >
+        <mat-card-content>
+            {{notification.title}}
+            <br>
+            {{notification.text}}
+        </mat-card-content>
+        <mat-card-actions class="notification-action">
+            <mat-icon mat-line
+                      class="button-notification-type"
+                      [ngStyle]="{color: getNotificationType(notification.type)}"
+                      [matTooltip]="getNotificationTypeString(notification.type)"
+                      matTooltipPosition="left"
+                      matTooltipHideDelay="1"
+            >
+                circle
+            </mat-icon>
+            <mat-icon mat-line
+                      class="button-delete"
+                      (click)="$event.stopPropagation(); deleteNotification(notification.id)">
+                delete
+            </mat-icon>
+        </mat-card-actions>
+        <mat-divider></mat-divider>
+    </mat-card>
+</mat-menu>
